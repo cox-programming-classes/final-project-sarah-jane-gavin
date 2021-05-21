@@ -4,7 +4,7 @@
  * x, y, dx, and dy are all defined in the Sprite class and we get
  * all of those for free by using "extends Sprite"
  */
-class Blob extends Sprite
+class Blob extends Sprite implements ICollisionBox
 {
   // Blobs have a Radius and a color
   protected float radius;
@@ -28,9 +28,10 @@ class Blob extends Sprite
   }
   
   // Check to see if two blobs are touching
-  boolean collidesWith(Blob other)
+  boolean collidesWith(ICollisionBox other)
   {
-    return (this.distanceTo(other) <= (this.radius+other.radius)/2);    
+    float distance = this.pos.subtract(other.getPosition()).mag();
+    return distance < this.radius + other.getRadius();
   }
   
   // This is the method that is /absolutely/ required.
@@ -61,5 +62,9 @@ public class Block extends Blob
     fill(myColor);
     noStroke();
     rect(pos.x, pos.y, w, h);
+  }
+  float getRadius()
+  {
+    return radius;
   }
 }

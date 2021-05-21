@@ -22,6 +22,11 @@ abstract class Sprite
     pos = s;
     vel = new Vector2(0, 0);
   }
+  public Sprite(Vector2 s, Vector2 v)
+  {
+    pos = new Vector2(100,100);
+    vel = new Vector2(20,40);
+  }
   
   /// Behaviors
   public void moveTo(Vector2 newPosition)
@@ -34,7 +39,6 @@ abstract class Sprite
     pos.x = x;
     pos.y = y;
   }
-  
   public void setVelocity(Vector2 newVelocity)
   {
     vel = newVelocity;

@@ -22,7 +22,7 @@ public class Blob extends Sprite
   public void drawSprite()
   {
     fill(#012467);
-    ellipse(pos.x, pos.y, 125, 125);
+    ellipse(pos.x, pos.y, 30, 30);
     }
   
   float getRadius()

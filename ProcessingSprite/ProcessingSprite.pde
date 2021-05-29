@@ -17,10 +17,11 @@ void draw()
   background(255);
   g.applyTo(blob);
   blob.drawSprite();
+  
+  boundaries.checkCollisions(blob);
   blob.move();
   
   boundaries.draw();
-  boundaries.checkCollisions(blob);
 }
 
 void checkCollisions()

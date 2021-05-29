@@ -87,4 +87,11 @@ public class Vector2
     float ny = sin(rads)*x + cos(rads) * y; // new y
     return new Vector2(nx, ny);
   }
+  
+  public Vector2 reflectAcross(Vector2 n)
+  {
+    float k = this.mag()/(this.add(n)).mag();
+    Vector2 vpn = this.add(n);
+    return vpn.scale(k);
+  }
 }

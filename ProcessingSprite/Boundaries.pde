@@ -27,7 +27,30 @@ public void draw()
  
 public void checkCollisions(Blob blob)
 {
+  if(blob.pos.x < 40 && blob.pos.y < 540)
+  {
+    blob.vel.x = -blob.vel.x;
+  }
   
+  else if(blob.pos.x < 310 && blob.pos.y > (7.0/9.0 * blob.pos.x) + (4580.0/9.0))
+  {
+    //special bounce case
+    blob.vel = blob.vel.reflectAcross(new Vector2(9, -7));
+  }
+  
+  else if(blob.pos.x < 310 && blob.pos.y > 750 && blob.pos.y < 800)
+  {
+    blob.vel.x = -blob.vel.x;
+  }
+  
+  else if(blob.pos.x > 950 && blob.pos.x < 960 && blob.pos.y >100 && blob.pos.y <750)
+  {
+    blob.vel.x = -blob.vel.x;
+  }
+  
+  else if(blob.pos.x > 690 && blob.pos.y - 540 > (-21.0/26.0) * (blob.pos.x - 950))
+  {
+    blob.vel = blob.vel.reflectAcross(new Vector2(26, 21));
+  }
 }
-
 }

@@ -41,16 +41,52 @@ public void checkCollisions(Blob blob)
   else if(blob.pos.x < 310 && blob.pos.y > 750 && blob.pos.y < 800)
   {
     blob.vel.x = -blob.vel.x;
+    blob.vel = blob.vel.scale(0.90);
   }
   
   else if(blob.pos.x > 950 && blob.pos.x < 960 && blob.pos.y >100 && blob.pos.y <750)
   {
     blob.vel.x = -blob.vel.x;
+    blob.vel = blob.vel.scale(0.90);
   }
   
-  else if(blob.pos.x > 690 && blob.pos.y - 540 > (-21.0/26.0) * (blob.pos.x - 950))
+  else if(blob.pos.x > 690 && blob.pos.x < 960 && blob.pos.y - 540 > (-21.0/26.0) * (blob.pos.x - 950))
   {
-    blob.vel = blob.vel.reflectAcross(new Vector2(26, 21));
+    blob.vel = blob.vel.reflectAcross(new Vector2(-26, -21));
+    blob.vel = blob.vel.scale(0.90);
+  }
+  
+  else if(blob.pos.x > 690 && blob.pos.y > 750)
+  {
+    blob.vel.x = -blob.vel.x;
+    blob.vel = blob.vel.scale(0.90);
+  }
+  
+  else if(blob.pos.x > 750 && blob.pos.y < 60 && blob.pos.y < (6.0/25.0) * (blob.pos.x - 750))
+  {
+    blob.vel = blob.vel.reflectAcross(new Vector2(-25, 6));
+    blob.vel = blob.vel.scale(0.90);
+    //Top right triangle-- Sign may be flipped
+  }
+  
+  else if(blob.pos.y < 60 && blob.pos.x > 175 && blob.pos.x < 485)
+  {
+    blob.vel.x = -blob.vel.x;
+    blob.vel = blob.vel.scale(0.90);
+  }
+  
+  else if(blob.pos.x > 125 && blob.pos.x < 175 && blob.pos.y < 60 && blob.pos.y < (6.0/5.0) * (blob.pos.x - 125))
+  {
+    blob.vel = blob.vel.reflectAcross(new Vector2(-5, 6));
+    blob.vel = blob.vel.scale(0.90);
+    //Left side of trapezoid-- Sign may be flipped
+  }
+  
+  else if(blob.pos.x > 485 && blob.pos.x < 535 && blob.pos.y < 60 && blob.pos.y > (-6.0/5.0) * (blob.pos.x - 535))
+  {
+    blob.vel = blob.vel.reflectAcross(new Vector2(-5, -6));
+    blob.vel = blob.vel.scale(0.90);
+    //Left side of trapezoid-- Sign may be flipped
   }
 }
 }
